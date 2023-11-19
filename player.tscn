@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://stdyt7dgtdcu"]
+
+[ext_resource type="Texture2D" uid="uid://clmnjg2tj1mj4" path="res://assets/sprites/player/player.png" id="1_oas6r"]
+[ext_resource type="Script" path="res://Player.cs" id="2_tn8ii"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(584, 376)
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_tn8ii")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-20, 0)
+rotation = 1.5708
+texture = ExtResource("1_oas6r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
