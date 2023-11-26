@@ -1,19 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://stdyt7dgtdcu"]
+[gd_scene load_steps=7 format=3 uid="uid://cxxf7kjybl2ds"]
 
-[ext_resource type="Texture2D" uid="uid://clmnjg2tj1mj4" path="res://assets/sprites/player/player.png" id="1_oas6r"]
+[ext_resource type="Texture2D" uid="uid://c48gncljrdooc" path="res://assets/sprites/player/player.png" id="1_oas6r"]
 [ext_resource type="Script" path="res://Player.cs" id="2_tn8ii"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(584, 376)
-scale = Vector2(2, 2)
+[sub_resource type="Animation" id="Animation_6bn7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rdsxc"]
+resource_name = "fly"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxsgi"]
+_data = {
+"RESET": SubResource("Animation_6bn7x"),
+"fly": SubResource("Animation_rdsxc")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45ww8"]
+radius = 32.0
+height = 80.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(632, 304)
+script = ExtResource("2_tn8ii")
 metadata/_edit_group_ = true
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("2_tn8ii")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(-20, 0)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-64, 0)
 rotation = 1.5708
+scale = Vector2(2, 2)
 texture = ExtResource("1_oas6r")
+hframes = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_pxsgi")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-72, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_45ww8")
+
+[node name="LaserSpawn1" type="Marker2D" parent="."]
+position = Vector2(-59, -26)
+
+[node name="LaserSpawn2" type="Marker2D" parent="."]
+position = Vector2(-59, -18)
+
+[node name="LaserSpawn3" type="Marker2D" parent="."]
+position = Vector2(-60, 18)
+
+[node name="LaserSpawn4" type="Marker2D" parent="."]
+position = Vector2(-60, 26)
