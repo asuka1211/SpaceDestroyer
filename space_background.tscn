@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpdgx16fevvlg"]
+
+[ext_resource type="Texture2D" uid="uid://bqlu6iiw7l6tv" path="res://assets/sprites/planets/background.png" id="1_ni386"]
+[ext_resource type="Texture2D" uid="uid://p64sici77wy2" path="res://assets/sprites/planets/planet_2.png" id="2_0s087"]
+[ext_resource type="Texture2D" uid="uid://bt030y67dj6h1" path="res://assets/sprites/planets/planet_3.png" id="3_cciud"]
+[ext_resource type="Texture2D" uid="uid://cxoggtiqbfag8" path="res://assets/sprites/planets/planet_1.svg" id="4_4uim8"]
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SpaceLayer"]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ni386")
+stretch_mode = 1
+
+[node name="SunLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SunLayer"]
+texture_filter = 1
+position = Vector2(200, 400)
+texture = ExtResource("2_0s087")
+
+[node name="PlanetLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PlanetLayer"]
+texture_filter = 1
+position = Vector2(864, 176)
+texture = ExtResource("3_cciud")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlanetLayer"]
+texture_filter = 1
+position = Vector2(264, 152)
+texture = ExtResource("4_4uim8")
