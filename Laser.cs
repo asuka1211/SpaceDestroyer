@@ -18,4 +18,9 @@ public partial class Laser : Area2D
     {
         QueueFree();
     }
+
+    private void OnBodyEntered(Node2D body)
+    {
+        body.QueueFree();
+    }
 }

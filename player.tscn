@@ -69,13 +69,13 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_45ww8")
 
 [node name="LaserSpawn1" type="Marker2D" parent="."]
-position = Vector2(-59, -26)
+position = Vector2(-58, -26)
 
 [node name="LaserSpawn2" type="Marker2D" parent="."]
-position = Vector2(-59, -18)
+position = Vector2(-58, -18)
 
 [node name="LaserSpawn3" type="Marker2D" parent="."]
-position = Vector2(-60, 18)
+position = Vector2(-59, 18)
 
 [node name="LaserSpawn4" type="Marker2D" parent="."]
-position = Vector2(-60, 26)
+position = Vector2(-59, 26)

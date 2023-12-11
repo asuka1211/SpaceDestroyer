@@ -24,4 +24,5 @@ position = Vector2(-7.10543e-15, 0)
 rotation = 1.5708
 scale = Vector2(0.163241, 0.811074)
 
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnVisibleOnScreenNotifier2dScreenExited"]

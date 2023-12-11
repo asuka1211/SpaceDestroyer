@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3v7ho1ckgvqr"]
+
+[ext_resource type="Script" path="res://Enemy.cs" id="1_7th7t"]
+[ext_resource type="Texture2D" uid="uid://drvvimkslsbv3" path="res://assets/sprites/enemy/enemy_1-sheet.png" id="2_6gien"]
+
+[sub_resource type="Animation" id="Animation_up72o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ln67r"]
+resource_name = "fly"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 3, 4, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5n30y"]
+_data = {
+"RESET": SubResource("Animation_up72o"),
+"fly": SubResource("Animation_ln67r")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqwrh"]
+radius = 32.0
+height = 64.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_7th7t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5n30y")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("2_6gien")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dqwrh")
+
+[node name="LaserSpawn1" type="Marker2D" parent="."]
+position = Vector2(-1, -28)
+
+[node name="LaserSpawn2" type="Marker2D" parent="."]
+position = Vector2(6, -17)
+
+[node name="LaserSpawn3" type="Marker2D" parent="."]
+position = Vector2(6, 17)
+
+[node name="LaserSpawn4" type="Marker2D" parent="."]
+position = Vector2(-1, 28)
