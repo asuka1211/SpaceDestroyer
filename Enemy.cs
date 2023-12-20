@@ -10,6 +10,8 @@ public partial class Enemy : CharacterBody2D
     private Marker2D _gun2;
     private Marker2D _gun3;
     private Marker2D _gun4;
+    private Timer _bulletTimer;
+    private bool isEnemyCanShoot = true;
 
     public Player Player;
 
@@ -20,6 +22,7 @@ public partial class Enemy : CharacterBody2D
         _gun2 = GetNode<Marker2D>("LaserSpawn2");
         _gun3 = GetNode<Marker2D>("LaserSpawn3");
         _gun4 = GetNode<Marker2D>("LaserSpawn4");
+        _bulletTimer = GetNode<Timer>("BulletTimer");
     }
 
     private void Shoot()
@@ -51,12 +54,15 @@ public partial class Enemy : CharacterBody2D
         LookAt(target);
     }
 
-
     public override void _Process(double delta)
     {
-        if (GlobalPosition.DirectionTo(Player.GlobalPosition).Dot(GlobalPosition) > 0)
+        if (GlobalPosition.DirectionTo(Player.GlobalPosition).Dot(GlobalPosition) > 0 && isEnemyCanShoot)
         {
+            if(_bulletTimer.IsStopped()){
+                _bulletTimer.Start();
+            }
             Shoot();
+            isEnemyCanShoot = false;
         }
     }
 
@@ -68,5 +74,10 @@ public partial class Enemy : CharacterBody2D
         laser.Direction = direction.Normalized();
         laser.Rotation = direction.Angle();
         GetTree().CurrentScene.AddChild(laser);
+    }
+
+    private void OnBulletTimerTimeout()
+    {
+        isEnemyCanShoot = true;
     }
 }

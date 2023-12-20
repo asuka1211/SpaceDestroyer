@@ -18,6 +18,7 @@ MobScene = ExtResource("2_ixbr1")
 [node name="Player" parent="." instance=ExtResource("1_kmf7j")]
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_qblrr")]
+follow_viewport_scale = 1.0
 
 [node name="MobSpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_koou3")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxxf7kjybl2ds"]
+[gd_scene load_steps=6 format=3 uid="uid://cxxf7kjybl2ds"]
 
 [ext_resource type="Texture2D" uid="uid://c48gncljrdooc" path="res://assets/sprites/player/player.png" id="1_oas6r"]
 [ext_resource type="Script" path="res://Player.cs" id="2_tn8ii"]
@@ -40,10 +40,6 @@ _data = {
 "fly": SubResource("Animation_rdsxc")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45ww8"]
-radius = 32.0
-height = 80.0
-
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(632, 304)
 script = ExtResource("2_tn8ii")
@@ -63,11 +59,6 @@ libraries = {
 "": SubResource("AnimationLibrary_pxsgi")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-72, 0)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_45ww8")
-
 [node name="LaserSpawn1" type="Marker2D" parent="."]
 position = Vector2(-58, -26)
 
@@ -79,3 +70,9 @@ position = Vector2(-59, 18)
 
 [node name="LaserSpawn4" type="Marker2D" parent="."]
 position = Vector2(-59, 26)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-77, 0)
+polygon = PackedVector2Array(45, 2, 14, 16, 17, 16, 17, 20, 7, 20, 5, 24, 17, 24, 17, 28, -1, 28, -4, 32, -25, 12, -25, -12, -4, -32, 0, -28, 17, -28, 17, -24, 5, -24, 8, -20, 17, -20, 17, -16, 13, -16, 45, -2)
+
+[node name="Camera2D" type="Camera2D" parent="."]

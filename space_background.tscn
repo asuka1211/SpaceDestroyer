@@ -6,17 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://cxoggtiqbfag8" path="res://assets/sprites/planets/planet_1.svg" id="4_4uim8"]
 
 [node name="SpaceBackground" type="ParallaxBackground"]
+follow_viewport_scale = 0.001
 
 [node name="SpaceLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="TextureRect" type="TextureRect" parent="SpaceLayer"]
 texture_filter = 1
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_ni386")
 stretch_mode = 1
 
 [node name="SunLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="SunLayer"]
 texture_filter = 1
@@ -24,6 +28,8 @@ position = Vector2(200, 400)
 texture = ExtResource("2_0s087")
 
 [node name="PlanetLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlanetLayer"]
 texture_filter = 1

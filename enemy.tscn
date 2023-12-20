@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3v7ho1ckgvqr"]
+[gd_scene load_steps=6 format=3 uid="uid://b3v7ho1ckgvqr"]
 
 [ext_resource type="Script" path="res://Enemy.cs" id="1_7th7t"]
 [ext_resource type="Texture2D" uid="uid://drvvimkslsbv3" path="res://assets/sprites/enemy/enemy_1-sheet.png" id="2_6gien"]
@@ -41,10 +41,6 @@ _data = {
 "fly": SubResource("Animation_ln67r")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqwrh"]
-radius = 32.0
-height = 64.0
-
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_7th7t")
 
@@ -59,17 +55,21 @@ rotation = 1.5708
 texture = ExtResource("2_6gien")
 hframes = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_dqwrh")
-
 [node name="LaserSpawn1" type="Marker2D" parent="."]
-position = Vector2(-1, -28)
+position = Vector2(0, -28)
 
 [node name="LaserSpawn2" type="Marker2D" parent="."]
-position = Vector2(6, -17)
+position = Vector2(7, -17)
 
 [node name="LaserSpawn3" type="Marker2D" parent="."]
-position = Vector2(6, 17)
+position = Vector2(7, 17)
 
 [node name="LaserSpawn4" type="Marker2D" parent="."]
-position = Vector2(-1, 28)
+position = Vector2(0, 28)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(31, -1, -2, -11, -5, -16, 6, -16, 6, -19, -6, -19, -13, -26, -1, -28, -1, -29, -16, -29, -8, -4, -16, -2, -16, 2, -8, 4, -16, 29, -1, 29, -13, 26, -6, 19, 6, 19, 6, 16, -5, 16, -2, 11, 31, 1)
+
+[node name="BulletTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BulletTimer" to="." method="OnBulletTimerTimeout"]
