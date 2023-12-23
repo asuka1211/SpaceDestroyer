@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlsb0lw8unly1"]
+[gd_scene load_steps=7 format=3 uid="uid://dlsb0lw8unly1"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_f5s7t"]
 [ext_resource type="PackedScene" uid="uid://cxxf7kjybl2ds" path="res://player.tscn" id="1_kmf7j"]
 [ext_resource type="PackedScene" uid="uid://b3v7ho1ckgvqr" path="res://enemy.tscn" id="2_ixbr1"]
 [ext_resource type="PackedScene" uid="uid://bpdgx16fevvlg" path="res://space_background.tscn" id="2_qblrr"]
+[ext_resource type="PackedScene" uid="uid://bguk718hus6bs" path="res://hud.tscn" id="5_tyhd5"]
 
 [sub_resource type="Curve2D" id="Curve2D_koou3"]
 _data = {
@@ -14,8 +15,7 @@ point_count = 5
 [node name="Main" type="Node2D"]
 script = ExtResource("1_f5s7t")
 MobScene = ExtResource("2_ixbr1")
-
-[node name="Player" parent="." instance=ExtResource("1_kmf7j")]
+PlayerScene = ExtResource("1_kmf7j")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_qblrr")]
 follow_viewport_scale = 1.0
@@ -27,4 +27,7 @@ curve = SubResource("Curve2D_koou3")
 
 [node name="MobTimer" type="Timer" parent="."]
 
+[node name="HUD" parent="." instance=ExtResource("5_tyhd5")]
+
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
+[connection signal="StartGame" from="HUD" to="." method="StartGamePressed"]

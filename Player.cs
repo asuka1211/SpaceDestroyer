@@ -3,7 +3,6 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-
     private int _speed = 400;
     private AnimationPlayer _animationPlayer;
     private PackedScene _laser = ResourceLoader.Load("res://laser.tscn") as PackedScene;
